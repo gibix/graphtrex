@@ -53,15 +53,21 @@ func main() {
 			log.Fatal(err)
 		}
 
-		// postid <-> timelineid
 		writeEdge(*host+"/api/v1/write", []edge_t{edge_t{
+			// postid -> timelineid
 			record[3],
-			"isIn",
+			"isInTimeline",
 			record[5],
 		}, edge_t{
+			// user -> timelineid
 			*user,
-			"own",
+			"ownTimeline",
 			record[5],
+		}, edge_t{
+			// user <- timelineid
+			record[5],
+			"ownedByUser",
+			*user,
 		}})
 	}
 
