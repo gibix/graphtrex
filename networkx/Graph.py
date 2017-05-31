@@ -7,82 +7,32 @@ import powerlaw as pwl
 from sympy import *
 from lea   import *
 
-#sometimes an error on numpy arrays will show up
-#ignore it
 np.seterr(divide='ignore', invalid='ignore')
 
 G = nx.Graph()
 
-filename1 = "feed-100014305273231.csv"
+filenames = ["feed-100014305273231.csv", "feed-100016786692466.csv", "feed-100016788883580.csv", "feed-100016926932367.csv"]
+users = []
 
-user1 = filename1[5:-4]
+for idx, filename in enumerate(filenames):
 
-fh = open(filename1,'r')
+    users.append(filename[5:-4])
 
-fh.readline()
+    #Open f and ignore the first line
+    fh = open(filename, 'r')
+    fh.readline()
 
-for line in fh.readlines():
-     s = line.strip().split(',')
-     TimeLine = s[3]
-     PostId = s[5]
-     G.add_edge(PostId, TimeLine)
-     G.add_edge(user1, TimeLine)
-    
-fh.close()
+    for line in fh.readlines():
+        s = line.strip().split(',')
+        TimeLine = s[3]
+        PostId = s[5]
+        G.add_edge(PostId, TimeLine)
+        G.add_edge(users[idx], TimeLine)
 
-filename2 = "feed-100016786692466.csv"
+    fh.close()
 
-user2 = filename2[5:-4]
-
-fh = open(filename2,'r')
-
-fh.readline()
-
-for line in fh.readlines():
-     s = line.strip().split(',')
-     TimeLine = s[3]
-     PostId = s[5]
-     G.add_edge(PostId, TimeLine)
-     G.add_edge(user2, TimeLine)
-    
-fh.close()
-
-filename3 = "feed-100016788883580.csv"
-
-user3 = filename3[5:-4]
-
-fh = open(filename3,'r')
-
-fh.readline()
-
-for line in fh.readlines():
-     s = line.strip().split(',')
-     TimeLine = s[3]
-     PostId = s[5]
-     G.add_edge(PostId, TimeLine)
-     G.add_edge(user3, TimeLine)
-    
-fh.close()
-
-filename4 = "feed-100016926932367.csv"
-
-user4 = filename4[5:-4]
-
-fh = open(filename4,'r')
-
-fh.readline()
-
-for line in fh.readlines():
-     s = line.strip().split(',')
-     TimeLine = s[3]
-     PostId = s[5]
-     G.add_edge(PostId, TimeLine)
-     G.add_edge(user4, TimeLine)
-    
-fh.close()
-
-
-print len(G), len(G.edges())
+print "The graph has", len(G) , "nodes"
+print "The graph has" ,len(G.edges()), "edges"
 
 degree = np.array(G.degree().values())
 #for i in degree:
@@ -103,7 +53,7 @@ fit_function.power_law.sigma
 print fit_function.power_law.sigma
 
 #The vaue of xmin can be fixed
-#this values should be changed 
+#this values should be changed
 
 fit_function.power_law.xmin
 print fit_function.power_law.xmin
@@ -118,11 +68,12 @@ print fit_function_fixmin.power_law.sigma
 #We look at the values of teh Kolmogorov-Smirnov
 #distance of the two fits to compare them
 
-fit_function.supported_distributions
-R,p = fit_function.
-fit_function.power_law.D
-print fit_function.power_law.D
+#TODO compare powerlaw to other ditributions
 
-fit_function_fixmin.power_law.sigma
-print fit_function_fixmin.power_law.sigma
+#fit_function.supported_distributions
+#R,p = fit_function.
+#fit_function.power_law.D
+#print fit_function.power_law.D
 
+#fit_function_fixmin.power_law.sigma
+#print fit_function_fixmin.power_law.sigma
