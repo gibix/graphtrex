@@ -22,7 +22,7 @@ functions and dats strcutures should be re-usable.
 
 ## 2. Data structures and visulization
 
-- [x]Add graph edges as *User -> PostID -> Timeline*  
+- [x] Add graph edges as *User -> PostID -> Timeline*  
 
 - [ ] *PostId -> PostId* where an edge implies that two different  posts are present in two users' timeline.
    Timeline position is added as vertex property.
