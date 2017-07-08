@@ -22,9 +22,9 @@ functions and dats strcutures should be re-usable.
 
 ## 2. Data structures and visulization
 
-[x] Add graph edges as  User -> PostID -> Timeline  
+[x] Add graph edges as *User -> PostID -> Timeline*  
 
-[] PostId -> PostId where an edge implies that two different  posts are present in two users' timeline.
+[] *PostId -> PostId* where an edge implies that two different  posts are present in two users' timeline.
    Timeline position is added as vertex property.
 
 [] Other?
@@ -42,4 +42,42 @@ Please for an intro refer to [Strogatz, 2001 Exploring Complex Networks](http://
 For example connecteing each user to  a post and to a timeline will necessarly create some nodes that have a high connectivity degree, making of each user an hub in the network, portratiting necessarly to a scale-free dynamics. This will lead to a completely different clustering coefficient then, let's say, post -> post edges. 
 Anyway having complementary data structures will certainly not pauper our research.
 
+Up to this point, putting our best efforts, the analysis could be completed for the end of August.
+Of course we did not saturate the whole body of research in social network analysis.
+The analysis in 4. are mainly intended for a dataset more complex than that of the french elections.
+ 
+
+## 4. Future directions
+
+A detailed mathematical grounding for the topics presented below is out of scope for this document.
+Please refer to [Cultural dissemination in a complex network](http://www.sciencedirect.com/science/article/pii/S037843710800962X), [A matrix iteration for dynamic network
+summaries](http://centaur.reading.ac.uk/28768/1/dynsumresub.pdf), [Bistability Through Triadic Closure](https://core.ac.uk/download/pdf/1442966.pdf), [Complex Dynamics in a Model
+of Social Norm](https://www.reading.ac.uk/web/files/maths/Preprint_12_21_Parsons.pdf)
+
+### Fully coupled systems
+
+There is a large literature in psycology that is based on individuals' attitudes and behaviors being in a tensioned equilibrium between excitatory and inhibiting processes.
+Typically the state of an individual is represented by a set of state variables, some measuring atcivating elements ans some measuring the inhibitng elements.
+
+Activator-inhibitor systems have had an impact whitin mathematical models where an uniformity equilibrium across a population of individual systems become destabilized by the very act of passive coupling between them. Such Turing instabilities can sometimes seem counterproductive.
+Homophily is a term that describes how associations are more likely to occur between people who have similar attitudes and beliefs. The main goal is to show how individuals' activating-inhibitor dynamics coupled through a homophilic evolving network produce systems that have pesudoperiodic consensus and fractionation.
+
+This would a very exciting topic to dive into : there are numerous commentators in socioeconomic fields who assert that divergent attitudes, beliefs and social norms require leaders and are imposed on populations, or else are driven by partial experience and eventes.
+But here we can see that transient existence of locally clustered subgroups, holding different views, can be an emergent behavior within coupled systems.
+
+### Epidemic dynamics
+
+Especially for critical vertices, it could be interesting to try to fit the spread of a post in different users' timeline using epidemic-like models, this could be accomplished solving the differential equations of the deterministic SIR model and simulating a discrete and stochastic SIR model by randomly extracting the transition elements at each step. Dependence for initial conditions should be highly considered.
+
+For an interesting body of research on how to nicely visualize epidemic diffusion network by temporal dynamcis look at [2001, Liljeros](://www.nature.com/nature/journal/v411/n6840/full/411907a0.html) which found that the network of human sexual contacts is scale-free and [2011, Rocha](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1001109) which published a temporal datasets of sexual contacts in Brazil.
+
+### Evolving networks in continuos and discrete time
+
+Consider each user connected through a dynamically undirected network representing a post in common or some other kind of interaction that is considered valid for an edge between the two nodes.
+
+*A(t)* would be the *NxN* adjacency matrix, where for *t!=0* *A(t)* is a stochastic objected befined by probability distribution of a set of all possible asjacency matrices.
+
+Assuming that each edge could evolve independently over time, though it is conditionally dependent upon the current network, we could consider that the probability that from an adjacency matrix *A(t)* we could obtain *A(dt +t)* is enough to specify its expected value.
+
+The evolution model is given by a Markow first order model where we consider edge birth and mortality porbabilities. Anyway considering the communicability matrix which provides a weighted count of all possible dynamic paths between all pairs of vertices. Its row sum represnt the ability of an user to send messages to other, while column sum represent teh ability of corresponding people to receive messages from others.
 
