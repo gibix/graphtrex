@@ -69,7 +69,7 @@ But here we can see that transient existence of locally clustered subgroups, hol
 
 Especially for critical vertices, it could be interesting to try to fit the spread of a post in different users' timeline using epidemic-like models, this could be accomplished solving the differential equations of the deterministic SIR model and simulating a discrete and stochastic SIR model by randomly extracting the transition elements at each step. Dependence for initial conditions should be highly considered.
 
-For an interesting body of research on how to nicely visualize epidemic diffusion network by temporal dynamcis look at [2001, Liljeros](://www.nature.com/nature/journal/v411/n6840/full/411907a0.html) which found that the network of human sexual contacts is scale-free and [2011, Rocha](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1001109) which published a temporal datasets of sexual contacts in Brazil.
+For an interesting body of research on how to nicely visualize epidemic diffusion network by temporal dynamcis look at [2001, Liljeros](www.nature.com/nature/journal/v411/n6840/full/411907a0.html) which found that the network of human sexual contacts is scale-free and [2011, Rocha](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1001109) which published a temporal datasets of sexual contacts in Brazil.
 
 ### Evolving networks in continuos and discrete time
 
