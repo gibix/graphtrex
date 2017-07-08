@@ -1,4 +1,4 @@
-# Roadmap for graphtrex analysis
+# RPoadmap for graphtrex analysis
 
 This project is intended to provide an implementation of complex network dynamics analysis on the various datasets generously provided by the [tracking.exposed]( https://facebook.tracking.exposed) team.
 
@@ -17,9 +17,16 @@ and graph metrics would have been employed. The code has a sequential appearance
 functions and dats strcutures should be re-usable.
 
 [] Divide the code in two modules : data structure initialization and network analysis
+
 [] Add a IPython notebook for graph visualization
 
-## 2. Complex Network Analysis
+## 2. Data structures and visulization
 
+[x] Add graph edges as  User -> PostID -> Timeline  
 
+[] PostId -> PostId where an edge implies that two different  posts are present in two users' timeline.
+   Timeline position is added as vertex property.
+
+[] Other?
+   
 
