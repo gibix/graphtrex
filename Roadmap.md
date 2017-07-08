@@ -16,28 +16,28 @@ The code available in the networkx folder, was inteded as a first draft on which
 and graph metrics would have been employed. The code has a sequential appearance, whereas instead 
 functions and dats strcutures should be re-usable.
 
-[] Divide the code in two modules : data structure initialization and network analysis
+- [ ] Divide the code in two modules : data structure initialization and network analysis
 
-[] Add a IPython notebook for graph visualization
+- [ ] Add a IPython notebook for graph visualization
 
 ## 2. Data structures and visulization
 
-[x] Add graph edges as *User -> PostID -> Timeline*  
+- [x]Add graph edges as *User -> PostID -> Timeline*  
 
-[] *PostId -> PostId* where an edge implies that two different  posts are present in two users' timeline.
+- [ ] *PostId -> PostId* where an edge implies that two different  posts are present in two users' timeline.
    Timeline position is added as vertex property.
 
-[] Other?
+- [ ] Other?
    
 ## 3. Network analysis
 
 Please for an intro refer to [Strogatz, 2001 Exploring Complex Networks](http://www.math.cornell.edu/m/sites/default/files/imported/People/strogatz/exploring_complex_networks.pdf) and [Albert, Barabasi 2002 Statistical Mechanics of Complex Networks](https://arxiv.org/pdf/cond-mat/0106096.pdf)
 
-[] Study global dynamics of the network : this should be accomplished in various ways for different parameters, such as clustering coefficient, average path length and scale factor.
+- [ ] Study global dynamics of the network : this should be accomplished in various ways for different parameters, such as clustering coefficient, average path length and scale factor.
 
-[] Find critical nodes : after the previous point, we try to find the most critical points in the network.
+- [ ] Find critical nodes : after the previous point, we try to find the most critical points in the network.
 
-[] Find (if it so) the time necessary for a connected graph to transit towards a union of highly clusterized subgraphs. This analyis, more than others, should be affected by the particular data structure that is implemented. 
+- [ ] Find (if it so) the time necessary for a connected graph to transit towards a union of highly clusterized subgraphs. This analyis, more than others, should be affected by the particular data structure that is implemented. 
 
 For example connecteing each user to  a post and to a timeline will necessarly create some nodes that have a high connectivity degree, making of each user an hub in the network, portratiting necessarly to a scale-free dynamics. This will lead to a completely different clustering coefficient then, let's say, post -> post edges. 
 Anyway having complementary data structures will certainly not pauper our research.
