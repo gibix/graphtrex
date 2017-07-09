@@ -13,7 +13,7 @@ All our analysis are focused on giving an heuristic insight onto the dynamical v
 ## 1. Code style and functionality
 
 The code available in the networkx folder, was inteded as a first draft on which kind of data structures
-and graph metrics would have been employed. The code has a sequential appearance, whereas instead 
+and graph metrics would have been employed. The code has a sequential appearance, whereas instead
 functions and dats strcutures should be re-usable.
 
 - [ ] Divide the code in two modules : data structure initialization and network analysis
@@ -22,13 +22,13 @@ functions and dats strcutures should be re-usable.
 
 ## 2. Data structures and visulization
 
-- [x] Add graph edges as *User -> PostID -> Timeline*  
+- [x] Add graph edges as *User -> PostID -> Timeline*
 
 - [ ] *PostId -> PostId* where an edge implies that two different  posts are present in two users' timeline.
    Timeline position is added as vertex property.
 
 - [ ] Other?
-   
+
 ## 3. Network analysis
 
 Please for an intro refer to [Strogatz, 2001 Exploring Complex Networks](http://www.math.cornell.edu/m/sites/default/files/imported/People/strogatz/exploring_complex_networks.pdf) and [Albert, Barabasi 2002 Statistical Mechanics of Complex Networks](https://arxiv.org/pdf/cond-mat/0106096.pdf)
@@ -37,15 +37,15 @@ Please for an intro refer to [Strogatz, 2001 Exploring Complex Networks](http://
 
 - [ ] Find critical nodes : after the previous point, we try to find the most critical points in the network.
 
-- [ ] Find (if it so) the time necessary for a connected graph to transit towards a union of highly clusterized subgraphs. This analyis, more than others, should be affected by the particular data structure that is implemented. 
-
-For example connecteing each user to  a post and to a timeline will necessarly create some nodes that have a high connectivity degree, making of each user an hub in the network, portratiting necessarly to a scale-free dynamics. This will lead to a completely different clustering coefficient then, let's say, post -> post edges. 
+- [ ] Find (if it so) the time necessary for a connected graph to transit towards a union of highly clusterized subgraphs. This analyis, more than others, should be affected by the particular data structure that is implemented.
+ing
+For example connecting each user to  a post and to a timeline will necessarly create some nodes that have a high connectivity degree, making of each user an hub in the network, portratiting necessarly to a scale-free dynamics. This will lead to a completely different clustering coefficient then, let's say, post -> post edges. 
 Anyway having complementary data structures will certainly not pauper our research.
 
 Up to this point, putting our best efforts, the analysis could be completed for the end of August.
 Of course we did not saturate the whole body of research in social network analysis.
 The analysis in 4. are mainly intended for a dataset more complex than that of the french elections.
- 
+
 
 ## 4. Future directions
 
