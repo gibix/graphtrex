@@ -1,35 +1,42 @@
-import networkx as nx
-import random as rnd
-import numpy as np
-import re
-import powerlaw as pwl
+# import networkx as nx
+# import random as rnd
+# import numpy as np
+# import re
+# import powerlaw as pwl
+# 
+# from sympy import *
+# from lea   import *
+# 
+# np.seterr(divide='ignore', invalid='ignore')
+# 
+# G = nx.Graph()
+# 
+# 
+# users = []
+# 
+# for idx, filename in enumerate(filenames):
+# 
+#     users.append(filename[5:-4])
+# 
+#     #Open f and ignore the first line
+#     fh = open(filename, 'r')
+#     fh.readline()
+# 
+#     for line in fh.readlines():
+#         s = line.strip().split(',')
+#         TimeLine = s[3]
+#         PostId = s[5]
+#         G.add_edge(PostId, TimeLine)
+#         G.add_edge(users[idx], TimeLine)
+# 
+#     fh.close()
+# 
 
-from sympy import *
-from lea   import *
+from lib import *
 
-np.seterr(divide='ignore', invalid='ignore')
+filename = "fbtrex-French2017.csv"
 
-G = nx.Graph()
-
-filenames = ["feed-100014305273231.csv", "feed-100016786692466.csv", "feed-100016788883580.csv", "feed-100016926932367.csv"]
-users = []
-
-for idx, filename in enumerate(filenames):
-
-    users.append(filename[5:-4])
-
-    #Open f and ignore the first line
-    fh = open(filename, 'r')
-    fh.readline()
-
-    for line in fh.readlines():
-        s = line.strip().split(',')
-        TimeLine = s[3]
-        PostId = s[5]
-        G.add_edge(PostId, TimeLine)
-        G.add_edge(users[idx], TimeLine)
-
-    fh.close()
+G = posttlineuser(filename)
 
 print "The graph has", len(G) , "nodes"
 print "The graph has" ,len(G.edges()), "edges"
