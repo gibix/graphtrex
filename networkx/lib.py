@@ -8,13 +8,15 @@ from sympy import *
 from lea   import *
 
 ##Attention this will req admin cred in MacOSX
-##see below
+#  #see below
 import os
 
 np.seterr(divide='ignore', invalid='ignore')
 
-##Define a graph from user to timeline to post
-##Too much sparse
+"""
+  Define a graph from user to timeline to post
+  Too much sparse
+"""
 
 def posttlineuser(filename):
     G = nx.Graph()
@@ -35,8 +37,10 @@ def posttlineuser(filename):
 
     return G
 
-##User PostId Timeline
-##Again too much sparse
+"""
+  User PostId Timeline
+  Again too much sparse
+"""
 
 def userposttl(filename):
     G = nx.Graph()
@@ -54,12 +58,13 @@ def userposttl(filename):
     
     fh.close()
 
-    return G
+      return G
 
-
-##Parses a file looking for each user
-##Returns an array of files, each containing
-##posts for each user
+"""
+  Parses a file looking for each user
+  Returns an array of files, each containing
+  posts for each user
+"""
 
 def userparser(filename):
 
@@ -90,11 +95,22 @@ def userparser(filename):
 
     return users
 
-##For each user define a graph with all its posts
-##An edge is added between two posts if the post are
-##from the same source or if they are on the same timeline
-#If preconfig
+"""
+ For each user define a dynamical network representing its newsfeed
+ 
+ The time parameter is considered the timeline, an edge is
+ added between two posts if they are from the same source or
+ are distance of DMAX, if both the weights are added.
+ 
+ In the first case, the weight is given as a normalized fraction
+ of the number of posts of each source present in a timeline.
+ 
+ In the second, if the distance d is leq to DMAX the weight is
+ e^(-d). Here DMAX is set to 4, consider that e^-5 < 0.01
+"""
 
-def user(filename):
-    ##TODO
-    pass
+def source(user)
+
+        #TODO
+        timeline = ""
+        pass
