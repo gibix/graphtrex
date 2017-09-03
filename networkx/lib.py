@@ -3,6 +3,7 @@ import random as rnd
 import numpy as np
 import re
 import powerlaw as pwl
+import pickle
 
 from sympy import *
 from lea   import *
@@ -74,6 +75,9 @@ def userparser(filename):
     fh.readline()
 
     users = set()
+    timeline = ""
+    sources = []
+    postcount = {} 
     
     for line in fh.readlines():
         
@@ -97,11 +101,33 @@ def userparser(filename):
             tmp = open(filename,'a')
             tmp.write(line)
             tmp.close()
+
+        if timeline != s[5]:
+            
+            timeline = s[5]
+            postcount = {}
+            postcount[s[10]] = 1
+            sources.append(postcount)
+
+        else:
+
+            #TODO condense in an inline statement
+            if s[10] in sources[-1].keys():
+                sources[-1][s[10] += 1
+            else:
+                sources[-1][s[10] = 1
+
+    #Write the timeline data in a pickle file
+    #Assumes data.pkl is present
+
+    output = open('data.pkl', 'wb')
+    pickle.dump(data1, output)
+    output.close()
         
 
     fh.close()
 
-    return users
+    return users, sources
 
 """
  For each user define a dynamical network representing its newsfeed
@@ -114,10 +140,10 @@ def userparser(filename):
  of the number of posts of each source present in a timeline.
  
  In the second, if the distance d is leq to DMAX the weight is
- e^(-d). Here DMAX is set to 4, consider that e^-5 < 0.01
+ e^(-d). Here DMAX is set to 3, consider that e^-4 ~=  0.01
 """
 
-def usernetwork(user,DMAX = 4)
+def usernetwork(user,timelines, DMAX = 3)
    
    G = nx.Graph()
 
