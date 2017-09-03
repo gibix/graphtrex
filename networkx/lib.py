@@ -4,6 +4,7 @@ import numpy as np
 import re
 import powerlaw as pwl
 import pickle
+#import ppickle
 
 from sympy import *
 from lea   import *
@@ -121,7 +122,7 @@ def userparser(filename):
     #Assumes data.pkl is present
 
     output = open('data.pkl', 'wb')
-    pickle.dump(data1, output)
+    pickle.dump(sources, output)
     output.close()
         
 
@@ -141,15 +142,36 @@ def userparser(filename):
  
  In the second, if the distance d is leq to DMAX the weight is
  e^(-d). Here DMAX is set to 3, consider that e^-4 ~=  0.01
+
+ At each cycle, the adjacency matrix of the graph is damped by 
+ a 'forgetting' factor that should be optimized to fit the data.
+ Here we randomize it as one of the source values in part 1.
 """
 
-def usernetwork(user,timelines, DMAX = 3)
+def usernetwork(user,data_pkl='data.pkl', DMAX = 3):
    
-   G = nx.Graph()
+    pkl_file = open(data_pkl, 'rb')
+    timelines = pickle.load(pkl_file)
 
-   timeline = ""
+    #Normalize the number of posts of each source
+    normalize(timelines)
 
-
-
+    G = nx.Graph()
     
     pass
+"""
+Takes a list of dictionaries with numerical values
+Return the list with the dictionary values normalized
+(ie sum(dictionary.values) == 1)
+"""
+def normalize(sources):
+    
+    for timeline in sources:
+        si = 1.0 / sum(timeline.itervalues())
+        for k in timeline:
+            timeline[k] *= si
+
+    return sources
+
+    
+
