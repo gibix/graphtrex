@@ -63,7 +63,9 @@ def userposttl(filename):
 """
   Parses a file looking for each user
   Returns an array of files, each containing
-  posts for each user
+  posts for each user and an array of dictionaries
+  where for each timeline is present a dictionaire 
+  mapping each source to the number of posts
 """
 
 def userparser(filename):
@@ -72,14 +74,20 @@ def userparser(filename):
     fh.readline()
 
     users = set()
+    
     for line in fh.readlines():
+        
         s = line.strip().split(',')
+        
         if s[3] in users:
+            
             filename = s[3][1:-1] + ".csv"
             tmp = open(filename, 'a')
             tmp.write(line)
             tmp.close()
+       
        else:
+            
             users.add(s[3])
             filename = s[3][1:-1] + ".csv"
             
@@ -109,8 +117,13 @@ def userparser(filename):
  e^(-d). Here DMAX is set to 4, consider that e^-5 < 0.01
 """
 
-def source(user)
+def usernetwork(user,DMAX = 4)
+   
+   G = nx.Graph()
 
-        #TODO
-        timeline = ""
-        pass
+   timeline = ""
+
+
+
+    
+    pass
