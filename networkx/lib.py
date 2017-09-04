@@ -10,7 +10,7 @@ from sympy import *
 from lea   import *
 
 ##Attention this will req admin cred in MacOSX
-#  #see below
+##see below
 import os
 
 np.seterr(divide='ignore', invalid='ignore')
@@ -68,6 +68,12 @@ def userposttl(filename):
   posts for each user and an array of dictionaries
   where for each timeline is present a dictionaire 
   mapping each source to the number of posts
+
+  Even if a list of dictionaries is an esoteric
+  data structure (ie shit) is preferred to a matrix 
+  because we have a different number of sources in each
+  timeline, in different order and we need only to map
+  each univocally to the number of posts.
 """
 
 def userparser(filename):
@@ -80,6 +86,10 @@ def userparser(filename):
     sources = []
     postcount = {} 
     
+    #Data is saved for in a csv file for
+    #late retrievement, in this way we can
+    #implement different user centered topologies
+
     for line in fh.readlines():
         
         s = line.strip().split(',')
@@ -118,6 +128,12 @@ def userparser(filename):
             else:
                 sources[-1][s[10] = 1
 
+    #Sources are normalized before being stored
+    #to avoid repeating this operation at each
+    #file instantiation
+
+    sources = normalize(sources)
+
     #Write the timeline data in a pickle file
     #Assumes data.pkl is present
 
@@ -146,6 +162,8 @@ def userparser(filename):
  At each cycle, the adjacency matrix of the graph is damped by 
  a 'forgetting' factor that should be optimized to fit the data.
  Here we randomize it as one of the source values in part 1.
+
+
 """
 
 def usernetwork(user,data_pkl='data.pkl', DMAX = 3):
@@ -153,25 +171,32 @@ def usernetwork(user,data_pkl='data.pkl', DMAX = 3):
     pkl_file = open(data_pkl, 'rb')
     timelines = pickle.load(pkl_file)
 
-    #Normalize the number of posts of each source
-    normalize(timelines)
-
     G = nx.Graph()
-    
+
+    filename = user + '.csv'
+    fh = open(filename, 'r')
+
+    timelineid = 0
+    timeline = ""
+
     pass
 """
 Takes a list of dictionaries with numerical values
 Return the list with the dictionary values normalized
 (ie sum(dictionary.values) == 1)
+
+Weights should add to 1 so that properly process
+probabilities
+
 """
 def normalize(sources):
     
-    for timeline in sources:
-        si = 1.0 / sum(timeline.itervalues())
-        for k in timeline:
-            timeline[k] *= si
+   for timeline in sources:
+       si = 1.0 / sum(timeline.itervalues())
+       for k in timeline:
+           timeline[k] *= si
 
-    return sources
+   return sources
 
     
 
