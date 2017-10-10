@@ -9,6 +9,8 @@ import pickle
 from sympy import *
 from lea   import *
 
+import matplotlib.pyplot as plt
+
 ##Attention this will req admin cred in MacOSX
 ##see below
 import os
@@ -60,7 +62,7 @@ def userposttl(filename):
     
     fh.close()
 
-      return G
+    return G
 
 """
   Parses a file looking for each user
@@ -101,8 +103,7 @@ def userparser(filename):
             tmp.write(line)
             tmp.close()
        
-       else:
-            
+        else: 
             users.add(s[3])
             filename = s[3][1:-1] + ".csv"
             
@@ -124,9 +125,9 @@ def userparser(filename):
 
             #TODO condense in an inline statement
             if s[10] in sources[-1].keys():
-                sources[-1][s[10] += 1
+                sources[-1][s[10]] += 1
             else:
-                sources[-1][s[10] = 1
+                sources[-1][s[10]] = 1
 
     #Sources are normalized before being stored
     #to avoid repeating this operation at each
@@ -198,5 +199,53 @@ def normalize(sources):
 
    return sources
 
-    
 
+def posttouser(filename):
+   
+    G = nx.MultiGraph()
+
+    fh = open(filename, 'r')
+    fh.readline()
+
+    for line in fh.readlines():
+        s = line.strip().split(',')
+        user = s[3]
+        postid = s[7]
+        G.add_edge(postid, user)
+
+
+    fh.close()
+
+    return G
+
+def cleandeg(G, degmax):
+    for n in G.nodes():
+        if G.degree(n) == degmax:
+            G.remove_node
+
+def vizspringimage(G, filename):
+
+    pos=nx.spring_layout(G)
+
+    plt.figure( figsize = (80,60) )
+
+    s=nx.draw_networkx_nodes(G,pos,node_size=0.1,node_color=nx.degree(G).values(),alpha=1,cmap=plt.cm.coolwarm )
+
+    nx.draw_networkx_edges(G, pos, alpha=0.5)
+
+    #show the colorbar on the right side
+    cbar=plt.colorbar(s)
+    cbar.ax.set_ylabel('Degree', size=22)
+
+    plt.axis('off')
+
+    save_to_file(filename, plt)
+
+def save_to_file(filename, fig=None):
+    formats = ["pdf","png"]
+    if fig is None:
+        for form in formats:
+            plt.savefig("%s.%s"%(filename, form))
+        else:
+            for form in formats:
+                fig.savefig("%s.%s"%(filename, form))
